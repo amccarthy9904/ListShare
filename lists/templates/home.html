@@ -1,1 +1,10 @@
-home
+<div>
+  {% for list in lists %}
+    <div class="listname">
+      <a href="{% url 'list_detail' list.id %}">
+        <h3>{{ list.name|capfirst }}</h3>
+      </a>
+      <p>Owner: {{ list.owner }}</p>
+
+  {% endfor %}
+</div>
