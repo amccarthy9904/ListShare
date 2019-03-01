@@ -5,6 +5,8 @@
         <h3>{{ list.name|capfirst }}</h3>
       </a>
       <p>Owner: {{ list.owner }}</p>
+      <p>Editors: {{ list.editors|length }}</p>
+      <p>Viewers: {{ list.viewers|length }}</p>
 
   {% endfor %}
 </div>
