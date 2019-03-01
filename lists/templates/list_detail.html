@@ -8,20 +8,6 @@
   <!-- TODO: refactor when models are created for items in lists -->
     <h4>Content</h4>
     <p>{{ list.content }}</p>
-  <!-- TODO:
-    {% if list.items.all %} true if len(list) > 0
-      <h4>Content</h4>
-      <ul>
-        {% for item in list.items.all %}
-          <li>{{ item.link || item.content || item. something}}</li>
-        {% endfor %}
-      </ul>
-      <p>{list.name} last updated at: {list.lastupdate} by {list.lastupdate.user.name}</p>
-        change list.lastupdate to say how many minutes and hours ago it was updated
-        ctrl + f 'date' here https://docs.djangoproject.com/en/2.1/ref/templates/builtins/
-    {% else %}
-      <h4>This list is empty</h4>
-    {% endif% }
-    -->
+    <!-- TODO: #2 here -->
   {% endif% }
 </div>
