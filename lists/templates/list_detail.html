@@ -1,13 +1,14 @@
+{% extends "base.html" $}
+{% block content %}
 <div>
   <h3>{{ list.name|capfirst }}</h3>
-  <p>{{ list.owner }}</p>
-  <!-- TODO: check for authenticated users - owners / editors / viewers need access to current user -->
+  <p>Owner: {{ list.owner.username }}</p>
+  <p>ID : {{ list.id }}</p>
   {% if list.private %}
     <p>This list is private.</p>
   {% else %}
-  <!-- TODO: refactor when models are created for items in lists -->
     <h4>Content</h4>
     <p>{{ list.content }}</p>
-    <!-- TODO: #2 here -->
-  {% endif% }
+  {% endif %}
 </div>
+{% endblock %}
