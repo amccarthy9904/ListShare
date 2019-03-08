@@ -7,7 +7,7 @@ def get_user_deleted():
     return get_user_model().objects.get_or_create(username='deleted')[0]
 
 class List(models.Model):
-    PRIVACY_CHOICES = [('0', 'Private'), ('1', 'Public')]
+    #PRIVACY_CHOICES = [('0', 'Private'), ('1', 'Public')]
     TYPE_CHOICES = [('0', 'Text'), ('1', 'Itemized')]
     name = models.CharField(max_length=255)
     content = models.TextField(blank=True, null=True)
@@ -15,8 +15,8 @@ class List(models.Model):
     owner = models.ForeignKey(User, related_name='owner_of', null=True, blank=True, on_delete=models.CASCADE)
     editors = models.ManyToManyField(User, related_name='editor_of', null=True, blank=True)
     viewers = models.ManyToManyField(User, related_name='viewer_of', null=True, blank=True)
-    private = models.CharField(choices=PRIVACY_CHOICES, max_length=1, null=True, blank=True)
-    type = models.CharField(choices=TYPE_CHOICES, max_length=1, null=True, blank=True)
+    private = models.BooleanField(default=True, null=True, blank=True)
+    type = models.BooleanField(choices=TYPE_CHOICES, max_length=1, null=True, blank=True)
 
     def __str__(self):
         return self.name
