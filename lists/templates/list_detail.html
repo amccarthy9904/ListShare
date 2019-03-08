@@ -4,10 +4,15 @@
   <h3>{{ list.name|capfirst }}</h3>
   <p>Owner: {{ list.owner.username }}</p>
   <p>ID : {{ list.id }}</p>
-  {% if list.private %}
+  <p>Type : {{ list.type }}</p>
+  {% if list.private == 'Private' %}
     <p>This list is private.</p>
-  {% else %}
-    <h4>Content</h4>
+  {% endif %}
+  {% if list.type == 'Text' %}
+    <h4>Content - Text</h4>
+    <p>{{ list.content }}</p>
+  {% elif list.type == "Itemized" %}
+    <h4>Content - Itemized</h4>
     <p>{{ list.content }}</p>
   {% endif %}
 </div>
