@@ -5,13 +5,12 @@
   <p>Owner: {{ list.owner.username }}</p>
   <p>ID : {{ list.id }}</p>
   <p>Type : {{ list.type }}</p>
-  {% if list.private == 'Private' %}
+  {% if list.private %}
     <p>This list is private.</p>
-  {% endif %}
-  {% if list.type == 'Text' %}
+  {% elif list.type == '1' %}
     <h4>Content - Text</h4>
     <p>{{ list.content }}</p>
-  {% elif list.type == "Itemized" %}
+  {% elif list.type == "0" %}
     <h4>Content - Itemized</h4>
     <p>{{ list.content }}</p>
   {% endif %}
