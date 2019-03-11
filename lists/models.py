@@ -16,7 +16,7 @@ class List(models.Model):
     editors = models.ManyToManyField(User, related_name='editor_of', null=True, blank=True)
     viewers = models.ManyToManyField(User, related_name='viewer_of', null=True, blank=True)
     private = models.BooleanField(default=True, null=True, blank=True)
-    type = models.BooleanField(choices=TYPE_CHOICES, max_length=1, null=True, blank=True)
+    type = models.CharField(choices=TYPE_CHOICES, max_length=1, null=True, blank=True)
 
     def __str__(self):
         return self.name
