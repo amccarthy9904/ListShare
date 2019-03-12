@@ -1,7 +1,9 @@
 {% load static %}
+<!doctype html>
 <html lang="en-US">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" id="ample-style-css" href="{% static 'bootstrap/css/bootstrap.css' %}" type="text/css" media="all">
 <link href="https://fonts.googleapis.com/css?family=Muli|Roboto|Offside" rel="stylesheet">
     </head>
@@ -15,10 +17,11 @@
                                 <img src="{% static 'images/logo.png' %}" alt="Wisdom Pet Medicine">
                             </a>
                         </div>
-                        <div id="header-logo-image" class="login">
-                            <button type="button">Login</button>
-                            <button type="button">Sign Up</button>
+                        <div id="login-box" class="login">
+                          <a id="signup-button" class="login-link" href="{% url 'sign_up'%}">Sign Up</a>
+                          <a id="login-button" class="login-link" href="login">Login</a>
                             <!--<h3>Share some lists whynot?</h3>
+                                <button type="button">Login</button>
                             <p>With your friends perhaps?</p>-->
                         </div>
                     </div>
