@@ -59,20 +59,6 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	vertical-align: baseline;
 	background-color: var(--light_blue);
 }
-button{
-  color: white;
-  border: 0;
-	font-family: Muli, sans-serif;
-	font-size: 100%;
-	font-style: normal;
-	font-weight: normal;
-	margin: 0;
-	outline: 0;
-	padding: 18px;
-	vertical-align: baseline;
-  border-radius: 8px;
-	background-color: var(--dark_blue);
-}
 html {
 	overflow-y: scroll; /* Keeps page centred in all browsers regardless of content height */
 	-webkit-text-size-adjust: 100%; /* Prevents iOS text size adjust after orientation change, without disabling user zoom */
@@ -182,6 +168,22 @@ a:focus, a:active, a:hover {
 	max-height: 60px;
   float: right;
 }
+.login-link{
+  text-decoration: none;
+  float: right;
+  color: white;
+  border: 0;
+	font-family: Muli, sans-serif;
+	font-size: 100%;
+	font-style: normal;
+	font-weight: normal;
+	margin: 5px;
+	outline: 0;
+	padding: 18px;
+	vertical-align: baseline;
+  border-radius: 8px;
+	background-color: var(--dark_blue);
+}
 .inner-wrap {
 	max-width: 1100px;
 	margin: 0 auto;
@@ -203,7 +205,7 @@ a:focus, a:active, a:hover {
 	margin-right: auto;
 }
 
-#header-logo-image {
+#header-logo-image{
 	float: left;
 	padding: 5px 20px 5px 0;
 	max-width: 100%;
@@ -345,8 +347,8 @@ a {
 }
 
 a:hover {
-  color: #0056b3;
-  text-decoration: underline;
+  color: black;
+  text-decoration: none;
 }
 
 a:not([href]):not([tabindex]) {
