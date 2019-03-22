@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+  <h3>Edit {{ list.name|capfirst }}</h3>
+  <form class="edit_form" method="post">
+  {% csrf_token %}
+  {{ form }}
+
+  <a id="save-button" class="login-link" href="{% url 'list_detail'  list.id %}">Save</a>
+  <a id="cancel-button" class="login-link" href="{% url 'list_detail'  list.id %}">Cancel</a>
+  </form>
+</div>
+{% endblock %}
