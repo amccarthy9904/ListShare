@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import Http404
 from .models import List
+from .forms import EditListForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
@@ -21,9 +22,25 @@ def list_detail(request, id):
     return render(request, 'list_detail.html', {'list':list}, {'id':id})
     #return HttpResponse('<p>list_detail view wioth id {}</p>'.format(id))
 
-#def login(request):
-    #return render(request, 'registration/accounts/login.html')
-    #return HttpResponse('<p>home view</p>')
+def edit_list(request, id):
+    if request.method == "POST":
+        form = EditListForm(request.POST)
+        if form.is_valid():
+            model_instance = form.save(commit=False)
+            model_instance.save()
+            return redirect('/')
+    else:
+        list = List.objects.get(id=id)
+        #form = EditListForm()
+        form = EditListForm(instance=list)
+        return render(request, 'edit_list.html', {'list':list}, {'form':form})
+
+    #try:
+    #    list = List.objects.get(id=id)
+    #    form = EditListForm(instance=list)
+    #except List.DoesNotExist:
+    #    raise Http404('List not found')
+    #return render(request, 'edit_list.html', {'list':list}, {'form':form})
 
 def sign_up(request):
     if request.method == 'POST':
