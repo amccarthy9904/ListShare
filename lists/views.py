@@ -33,7 +33,7 @@ def edit_list(request, id):
         list = List.objects.get(id=id)
         #form = EditListForm()
         form = EditListForm(instance=list)
-        return render(request, 'edit_list.html', {'list':list}, {'form':form})
+        return render(request, 'edit_list.html', {'list':list,'form':form})
 
     #try:
     #    list = List.objects.get(id=id)
