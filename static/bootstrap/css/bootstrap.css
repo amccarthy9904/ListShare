@@ -99,7 +99,7 @@ button::-moz-focus-inner {
 	padding: 0;
 	margin: 0;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, li {
 	color: var(--gray-dark);
 	line-height: 1.4;
 	padding-bottom: 15px;
@@ -218,11 +218,6 @@ a:focus, a:active, a:hover {
 }
 
 
-
-
-
-
-
 /*End Modifications*/
 *,
 *::before,
@@ -288,11 +283,16 @@ address {
   line-height: inherit;
 }
 
+li {
+  list-style-type: none;
+}
+
 ol,
 ul,
 dl {
   margin-top: 0;
   margin-bottom: 1rem;
+  list-style-type: none;
 }
 
 ol ol,
