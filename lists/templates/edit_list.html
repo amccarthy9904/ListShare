@@ -1,12 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
+{% load filters %}
 <div>
   <h3>Edit {{ list.name|capfirst }}</h3>
   <form class="edit_form" method="post">
   {% csrf_token %}
-  {{ form }}
-
-  <a id="save-button" class="login-link" href="{% url 'list_detail'  list.id %}">Save</a>
+  {{ form.non_field_errors }}
+    <ul class="list-unstyled">
+      {% for field in form %}
+        <div class="fieldWrapper">
+          {{ field.errors }}
+          <li> {{field.label_tag}}<pre>{{ field|addclass:"editlist" }}</pre></li>
+          {% if field.help_text %}
+            <p class="help">{{ field.help_text|safe }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </ul>
+  <input type="submit" value="Save" id="save-button" class="login-link" href="{% url 'list_detail'  list.id %}"></input>
   <a id="cancel-button" class="login-link" href="{% url 'list_detail'  list.id %}">Cancel</a>
   </form>
 </div>
