@@ -1,5 +1,6 @@
 {% load static %}
 <!doctype html>
+
 <html lang="en-US">
     <head>
         <meta charset="UTF-8">
@@ -27,6 +28,13 @@
             <div class="main-wrapper">
                 <div class="single-page clearfix">
                     <div class="inner-wrap">
+                      {% if messages %}
+                      <ul class="messages">
+                          {% for message in messages %}
+                          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                          {% endfor %}
+                      </ul>
+                      {% endif %}
                         <p>Maybe some text here</p>
                         <div>
                         {% block content %}
