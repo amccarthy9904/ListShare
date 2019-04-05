@@ -20,7 +20,11 @@
                         </div>
                         <div id="login-box" class="login">
                           <a id="signup-button" class="login-link" href="{% url 'sign_up'%}">Sign Up</a>
-                          <a id="login-button" class="login-link" href="{% url 'login'%}">Login</a>
+                          {% if not username %}
+                            <a id="login-button" class="login-link" href="{% url 'login'%}">Login</a>
+                          {% else %}
+                            <a id="logout-button" class="login-link" href="{% url 'logout'%}">Logout</a>
+                          {% endif %}
                         </div>
                     </div>
                 </div>
