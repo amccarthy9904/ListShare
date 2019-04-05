@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.http import Http404
 from .models import List
 from .forms import OwnerEditListForm, EditorEditListForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -11,8 +11,12 @@ from django.contrib import messages
 # TODO: refactor these to use sessions when users are a real thing
 #https://docs.djangoproject.com/en/2.1/topics/http/sessions/
 def home(request):
+    if request.user.is_authenticated:
+        username = request.user.username
+    else:
+        username = False
     lists = List.objects.all()
-    return render(request, 'home.html', {'lists':lists, 'username':request.user.username})
+    return render(request, 'home.html', {'lists':lists, 'username':username})
     #return HttpResponse('<p>home view</p>')
 
 def list_detail(request, id):
@@ -76,3 +80,9 @@ def sign_up(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/sign_up.html', {'form': form}, {'username':request.user.username})
+
+def logout_view(request):
+    username = request.user.username
+    logout(request)
+    messages.success(request, f'User {username} logged out')
+    return redirect('home')
