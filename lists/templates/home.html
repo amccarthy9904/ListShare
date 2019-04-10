@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div>
+  <a id="new-list-button" class="login-link" href="{% url 'new_list' %}">New List</a>
   {% for list in lists %}
     <div class="listname">
       <a href="{% url 'list_detail' list.id %}">
