@@ -12,4 +12,5 @@ urlpatterns = [
     path('sign_up/', views.sign_up, name='sign_up'),
     re_path('lists/(\d+)/', views.list_detail, name='list_detail'),
     re_path('edit/(\d+)/', views.edit_list, name='edit_list'),
+    path('new/', views.new_list, name='new_list'),
 ]

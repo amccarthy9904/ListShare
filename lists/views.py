@@ -2,11 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import Http404
 from .models import List
-from .forms import OwnerEditListForm, EditorEditListForm
+from .forms import OwnerEditListForm, EditorEditListForm, NewListForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
+import time
 
 # TODO: refactor these to use sessions when users are a real thing
 #https://docs.djangoproject.com/en/2.1/topics/http/sessions/
@@ -50,6 +51,7 @@ def edit_list(request, id):
             messages.error(request, f'{list.name} unsuccessfully edited, {list.errors}')
             return render(request, 'edit_list.html', {'list':list,'form':form, 'username':request.user.username})
     else:
+        form = None
         if request.user.is_authenticated:    #user auth
             if request.user == list.owner:     #user auth, owner
                 messages.success(request, f'{request.user.username} is an owner')
@@ -65,6 +67,20 @@ def edit_list(request, id):
         else:    #user not auth, private
             messages.success(request, f'Private Lists cannot be edited by Users who do not have permission')
             return redirect('home')
+
+def new_list(request):
+    if request.method == "POST":
+        form = NewListForm(request.POST)
+        if form.is_valid():
+            list = form.save(commit=False)
+            list.owner = request.user
+            list.save()
+            time.sleep(1)
+            messages.success(request, f'List {list.name} successfully created')
+            return redirect('home')
+    else:
+        form = NewListForm()
+        return render(request, 'new_list.html', {'form':form})
 
 def sign_up(request):
     if request.method == 'POST':
